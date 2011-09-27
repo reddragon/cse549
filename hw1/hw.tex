@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{url}
+\usetikzlibrary{shapes}
+
+
+\linespread{1.4}
+
+\title{Homework - 1}
+
+\author{Names Here}
+
+\begin{document}
+\maketitle
+
+\clearpage
+
+
+\section{Problem 1}
+(a) There are about 73 results for the Myoglobin gene. There are different sequences for different species, for eg. Homo Sapiens (Humans), Equus ferus caballus (Horse), Perkinsus marinus (A prevalent pathogen of oysters), Rattus norvegicus (Rat), etc.
+
+\clearpage
+
+\section{Problem 2}
+\clearpage
+
+\section{Problem 3}
+\clearpage
+
+\section{Problem 4}
+Construct the suffix tree of, {$ A\#B $}. 
+The suffix tree can be constructed in {$ O(n+m) $}, where {$ n $} is 
+the length of {$ A $} and {$ m $} is the length of {$ B $}. 
+Start traversing the tree from the first character of {$ B $} onwards, 
+and initialize a counter. Now, keep incrementing the counter until you 
+find a node with a valid \# pointer. This implies the end of the suffix 
+of {$ A $}. The traversal is done in {$ O(m) $}. 
+\clearpage
+
+\section{Problem 5}
+\clearpage
+
+\section{Problem 6}
+(a) Does not work. The example string itself “ABBABABA” is a 
+counter-example. The greedy strategy would select the largest 
+palindrome “BABAB”, and break the string into A-B-BABAB-A, 
+which is four parts. The optimal solution is ABBA-BAB-A, or ABBA-B-ABA.\\
+\\
+(b) Does not work. “ABBAABB” is a counter-example. The greedy strategy 
+would select the largest palindromes from left, sequentially, ABBA-A-BB. 
+Whereas, the optimal solution is A-BBAABB.
+\clearpage
+
+\end{document}

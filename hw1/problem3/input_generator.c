@@ -46,4 +46,6 @@ int main()
 		printf("\n");
 	}
 	
+	free(str);
+	
 }

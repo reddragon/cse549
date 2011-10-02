@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{url}
+\usetikzlibrary{shapes}
+
+
+\linespread{1.4}
+
+\title{Homework - 1}
+
+\author{Names Here}
+
+\begin{document}
+\maketitle
+
+\clearpage
+
+
+\section{Experience with GenBank/Entrez database}
+(a) There are 73 results for the Myoglobin gene\footnote{\url{http://www.ncbi.nlm.nih.gov/gene?term=myoglobin}}. There are so many results because many different organisms have the same gene, but the sequence of that gene might differ amongst them.
+The results inculde sequences of the gene as found in \textit{Homo Sapiens} (Humans), \textit{Equus ferus caballus} (Horse), \textit{Perkinsus marinus} (A prevalent pathogen of oysters), \textit{Rattus norvegicus} (Rat), amongst other organisms.\\
+\\
+(b) Searching the entire GenBank database for the keyword 'Human Genome', gave us results matching under categories like Nucleotides, Genes, Chromosomes, Genome, etc. On following the 'Genome' category, we ultimately ended up with the Human Genome page (\url{http://www.ncbi.nlm.nih.gov/genome/guide/human/}), where we could access the sequence for all the human chromosomes. 
+
+For each human chromosomes, we could see the list of genes which were associated with regions of the chromosomes, their utility with respect to certain genes and proteins, and options to view and download the data in different formats.\\
+\\
+(c) In all 37 eukaryotic genome sequencing projects are complete\footnote{\url{http://www.ncbi.nlm.nih.gov/genomes/leuks.cgi}}, of which are, 3 mammalian genome sequences (\textit{Homo Sapiens} (Human), \textit{Mus Musculus} (House Rat), \textit{Pan troglodytes verus} (West African Chimpanzee)), 5 plant genome sequences, and 16 fungii sequences. 2702 Viral genome sequencing projects are complete\footnote{\url{http://www.ncbi.nlm.nih.gov/genomes/GenomesGroup.cgi?taxid=10239&opt=Virus}}. Among single celled organizms (Prokaryotes), 1702 genome sequencing projects are complete\footnote{\url{http://www.ncbi.nlm.nih.gov/genomes/lproks.cgi}}, of which 1643 are bacterial genome sequences, and the rest are Archea. 
+\clearpage
+
+\section{Problem 2}
+\clearpage
+
+\section{Problem 3}
+\clearpage
+
+\section{Problem 4}
+Construct the suffix tree of, {$ A\#B $}. 
+The suffix tree can be constructed in {$ O(n+m) $}, where {$ n $} is 
+the length of {$ A $} and {$ m $} is the length of {$ B $}. 
+Start traversing the tree from the first character of {$ B $} onwards, 
+and initialize a counter. Now, keep incrementing the counter until you 
+find a node with a valid \# pointer. This implies the end of the suffix 
+of {$ A $}. If the node with \# 
+\\
+The traversal is done in {$ O(m) $}. 
+\clearpage
+
+\section{Problem 5}
+\clearpage
+
+\section{Problem 6}
+(a) Does not work. The example string itself “ABBABABA” is a 
+counter-example. The greedy strategy would select the largest 
+palindrome “BABAB”, and break the string into A-B-BABAB-A, 
+which is four parts. The optimal solution is ABBA-BAB-A, or ABBA-B-ABA.\\
+\\
+(b) Does not work. “ABABABA” is a counter-example. The greedy strategy 
+would select the largest palindromes from left. The largest and left-most
+palindrome is `BABA' which starts at the 2nd position. This leaves, `A' and
+`BA' at either ends, which leads to partitioning the string in this fashion
+`A-BABA-B-A', i.e. three cuts. Whereas, the optimal partition would have
+been `ABA-BABA', with only one cut.\\
+\\
+(c) An {$ O(n^3) $} Dynamic Programming solution exists.\\
+Let $partition(i)$ be the number of optimal partitions required for the string starting at index $i$. Then, we can recursively compute the value of 
+
+Then, the following pseudo-code can compute the value of $partition(i)$.
+\begin{verbatim}
+int solve(i) {
+    if(partition[i] != INF) 
+        return partition[i];
+		
+    for(int j=i; j<=n; j++)
+        if(ispalindrome(i,j))
+            partition[i] = min(partition[i], (j==n) + solve(j+1))
+    
+    return partition[i];
+}
+\end{verbatim}
+We find the value of $partition(i)$, for all possible points of starting, $n$, and each time the loop executes $n$ times. If the $ispalindrome$ function can be calculated with complexity $O(n)$, the overall complexity of the solution becomes $O(n^3)$.\\
+\\
+TODO: A better solution with Suffix Trees, most surely exists, I think.
+\clearpage
+
+\end{document}

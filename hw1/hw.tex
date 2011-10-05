@@ -78,25 +78,47 @@ palindrome is `BABA' which starts at the 2nd position. This leaves, `A' and
 `A-BABA-B-A', i.e. three cuts. Whereas, the optimal partition would have
 been `ABA-BABA', with only one cut.\\
 \\
-(c) An {$ O(n^3) $} Dynamic Programming solution exists.\\
-Let $partition(i)$ be the number of optimal partitions required for the string starting at index $i$. Then, we can recursively compute the value of 
+(c) Here we present an $O(N^2)$ solution to the problem. \\
 
-Then, the following pseudo-code can compute the value of $partition(i)$.
+Given a string $s$ of length $N$, for each position $i$, we need to know the lengths of different palindromes that start at that position. We do a bit of preprocessing to get this information. The time complexity of this preprocessing is $O(n^2)$. We do this by using the algorithm for finding the longest palindrome in a string. Given a position $i$, we can compare characters equidistant to its left and right and keep increasing the distance till these equidistant characters match. For each position, we maintain a set which stores all the unique lengths of palindrome starting at that position. We can find odd as well as even length palindromes this way. For each position $i$, there can be a maximum of $N$ entries. \\
+\\
+Now, for each position $i$, we have a set which contains the unique lengths of all palindromes starting at that position. Now we can use a recursive function with memoization to find the partition of the string into the minimum number of palindromes. 
+\\
+Code : 
 \begin{verbatim}
-int solve(i) {
-    if(partition[i] != INF) 
-        return partition[i];
-		
-    for(int j=i; j<=n; j++)
-        if(ispalindrome(i,j))
-            partition[i] = min(partition[i], (j==n) + solve(j+1))
-    
-    return partition[i];
+// v[i] is a set of integers that stores the lengths of all 
+// palindromes starting at position i. The value '1' is always in this set.
+vector<set<int> > v; 
+
+// MAXN is the maximum length of the string. dp[i] stores the minimum 
+// number of partitions required for the string S[i..N-1];
+int dp[MAXN]; 
+
+// We initialize all values in dp[] to -1 before calling solve(0).
+#define INFINITY (int)1e9
+int solve(int position)
+{
+  if(position == N)
+    return 0; // We don't need any more partitions if we reach the end of the string
+	
+  int &ret = dp[position];
+  if(ret != -1)
+    return ret; // If we have seen this value before, don't recalculate.
+	
+  ret = INFINITY;
+
+  set<int> s = v[position];
+  for(set<int> :: iterator it = s.begin(); it != s.end(); it++)
+  {
+    ret = min(ret, solve(position + *it) + 1);
+  }
+  return ret;
 }
 \end{verbatim}
-We find the value of $partition(i)$, for all possible points of starting, $n$, and each time the loop executes $n$ times. If the $ispalindrome$ function can be calculated with complexity $O(n)$, the overall complexity of the solution becomes $O(n^3)$.\\
-\\
-TODO: A better solution with Suffix Trees, most surely exists, I think.
+The complexity of calculating all the values is $O(N^2)$. This is because there are at most $N$ states that we will visit and for each of the states, there are $N$ other possible states. 
+
+So, the complexity of both, preprocessing and calculating, is $O(N^2)$. So, the solution has a complexity of $O(N^2)$ too. 
+
 \clearpage
 
 \end{document}

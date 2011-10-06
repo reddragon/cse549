@@ -21,6 +21,9 @@
 
 \clearpage
 
+\tableofcontents
+
+\clearpage
 
 \section{Experience with GenBank/Entrez database}
 There are 73 results for the Myoglobin gene\footnote{\url{http://www.ncbi.nlm.nih.gov/gene?term=myoglobin}}. There are so many results because many different organisms have the same gene, but the sequence of that gene might differ amongst them.
@@ -42,7 +45,316 @@ The Echidna is an egg-laying mammal found mainly in Australia. Their body is cov
 Professor Skiena has 27 papers listed on Pubmed as of 10/02/2011. Quite a few papers concentrate on core computational biology areas such as PCR primer desgin, virus attenuation etc. and have a considerable number of citations. This wouldn't be the case if the papers weren't up to the mark :) All of the papers on PubMed were also available on other sources like Google Scholar. 
 \clearpage
 
-\section{Problem 3}
+\section{Shortest Common Superstring}
+We carried out a set of experiements with different values of N, M and L. The results for which are attached below. 
+
+We used the naive greedy algorithm for calculating the shortest super string. N represents the length of the string, M the number of different fragments and L the length of each fragment. We find the ratio of the length of the original string to the length of the string we found using the algorithm. Along with this, we also find the time it takes to run that particular experiment and print this. 
+
+The results are pasted on the next page. 
+\clearpage
+{\small
+\begin{verbatim}
+N = 32, M = 8, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.1428, Time = 0m0.005s
+N = 32, M = 8, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.005s
+N = 32, M = 16, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.1034, Time = 0m0.004s
+N = 32, M = 16, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.003s
+N = 32, M = 32, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.009s
+N = 32, M = 32, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.011s
+N = 32, M = 64, L = 8, Coverage = 16.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.055s
+N = 32, M = 64, L = 16, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.072s
+N = 32, M = 128, L = 8, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.403s
+N = 32, M = 128, L = 16, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.542s
+N = 32, M = 256, L = 8, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m3.216s
+N = 32, M = 256, L = 16, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m4.486s
+N = 32, M = 512, L = 8, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m25.624s
+N = 32, M = 512, L = 16, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 0m35.750s
+N = 64, M = 8, L = 8, Coverage = 1.0000, Len(original)/Len(found) = 1.5609, Time = 0m0.003s
+N = 64, M = 8, L = 16, Coverage = 2.0000, Len(original)/Len(found) = 1.2800, Time = 0m0.002s
+N = 64, M = 8, L = 32, Coverage = 4.0000, Len(original)/Len(found) = 1.2075, Time = 0m0.003s
+N = 64, M = 16, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.2549, Time = 0m0.003s
+N = 64, M = 16, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0491, Time = 0m0.003s
+N = 64, M = 16, L = 32, Coverage = 8.0000, Len(original)/Len(found) = 1.1428, Time = 0m0.005s
+N = 64, M = 32, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.0491, Time = 0m0.008s
+N = 64, M = 32, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0491, Time = 0m0.011s
+N = 64, M = 32, L = 32, Coverage = 16.0000, Len(original)/Len(found) = 1.0666, Time = 0m0.016s
+N = 64, M = 64, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.049s
+N = 64, M = 64, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.062s
+N = 64, M = 64, L = 32, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.097s
+N = 64, M = 128, L = 8, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.360s
+N = 64, M = 128, L = 16, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.476s
+N = 64, M = 128, L = 32, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.781s
+N = 64, M = 256, L = 8, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m2.832s
+N = 64, M = 256, L = 16, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m3.757s
+N = 64, M = 256, L = 32, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m6.017s
+N = 64, M = 512, L = 8, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m22.461s
+N = 64, M = 512, L = 16, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m31.217s
+N = 64, M = 512, L = 32, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 0m49.674s
+N = 128, M = 8, L = 8, Coverage = .5000, Len(original)/Len(found) = 2.1694, Time = 0m0.004s
+N = 128, M = 8, L = 16, Coverage = 1.0000, Len(original)/Len(found) = 1.7777, Time = 0m0.003s
+N = 128, M = 8, L = 32, Coverage = 2.0000, Len(original)/Len(found) = 1.3473, Time = 0m0.002s
+N = 128, M = 8, L = 64, Coverage = 4.0000, Len(original)/Len(found) = 1.0578, Time = 0m0.005s
+N = 128, M = 16, L = 8, Coverage = 1.0000, Len(original)/Len(found) = 1.4883, Time = 0m0.005s
+N = 128, M = 16, L = 16, Coverage = 2.0000, Len(original)/Len(found) = 1.2929, Time = 0m0.004s
+N = 128, M = 16, L = 32, Coverage = 4.0000, Len(original)/Len(found) = 1.2075, Time = 0m0.004s
+N = 128, M = 16, L = 64, Coverage = 8.0000, Len(original)/Len(found) = 1.0578, Time = 0m0.006s
+N = 128, M = 32, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.1531, Time = 0m0.009s
+N = 128, M = 32, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0940, Time = 0m0.012s
+N = 128, M = 32, L = 32, Coverage = 8.0000, Len(original)/Len(found) = 1.1851, Time = 0m0.025s
+N = 128, M = 32, L = 64, Coverage = 16.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.023s
+N = 128, M = 64, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.0756, Time = 0m0.049s
+N = 128, M = 64, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.061s
+N = 128, M = 64, L = 32, Coverage = 16.0000, Len(original)/Len(found) = 1.0847, Time = 0m0.098s
+N = 128, M = 64, L = 64, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.155s
+N = 128, M = 128, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.349s
+N = 128, M = 128, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.427s
+N = 128, M = 128, L = 32, Coverage = 32.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.737s
+N = 128, M = 128, L = 64, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m1.241s
+N = 128, M = 256, L = 8, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m2.768s
+N = 128, M = 256, L = 16, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m3.500s
+N = 128, M = 256, L = 32, Coverage = 64.0000, Len(original)/Len(found) = 1.0078, Time = 0m5.451s
+N = 128, M = 256, L = 64, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m9.809s
+N = 128, M = 512, L = 8, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m22.134s
+N = 128, M = 512, L = 16, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m27.343s
+N = 128, M = 512, L = 32, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m43.798s
+N = 128, M = 512, L = 64, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 1m14.628s
+N = 256, M = 8, L = 8, Coverage = .2500, Len(original)/Len(found) = 4.8301, Time = 0m0.003s
+N = 256, M = 8, L = 16, Coverage = .5000, Len(original)/Len(found) = 2.6122, Time = 0m0.003s
+N = 256, M = 8, L = 32, Coverage = 1.0000, Len(original)/Len(found) = 1.8285, Time = 0m0.003s
+N = 256, M = 8, L = 64, Coverage = 2.0000, Len(original)/Len(found) = 1.2994, Time = 0m0.004s
+N = 256, M = 8, L = 128, Coverage = 4.0000, Len(original)/Len(found) = 1.0711, Time = 0m0.003s
+N = 256, M = 16, L = 8, Coverage = .5000, Len(original)/Len(found) = 2.6947, Time = 0m0.004s
+N = 256, M = 16, L = 16, Coverage = 1.0000, Len(original)/Len(found) = 1.4970, Time = 0m0.004s
+N = 256, M = 16, L = 32, Coverage = 2.0000, Len(original)/Len(found) = 1.5058, Time = 0m0.004s
+N = 256, M = 16, L = 64, Coverage = 4.0000, Len(original)/Len(found) = 1.1277, Time = 0m0.006s
+N = 256, M = 16, L = 128, Coverage = 8.0000, Len(original)/Len(found) = 1.0364, Time = 0m0.007s
+N = 256, M = 32, L = 8, Coverage = 1.0000, Len(original)/Len(found) = 1.5421, Time = 0m0.010s
+N = 256, M = 32, L = 16, Coverage = 2.0000, Len(original)/Len(found) = 1.2673, Time = 0m0.010s
+N = 256, M = 32, L = 32, Coverage = 4.0000, Len(original)/Len(found) = 1.0987, Time = 0m0.014s
+N = 256, M = 32, L = 64, Coverage = 8.0000, Len(original)/Len(found) = 1.0491, Time = 0m0.060s
+N = 256, M = 32, L = 128, Coverage = 16.0000, Len(original)/Len(found) = 1.0118, Time = 0m0.055s
+N = 256, M = 64, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.1377, Time = 0m0.051s
+N = 256, M = 64, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0406, Time = 0m0.069s
+N = 256, M = 64, L = 32, Coverage = 8.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.083s
+N = 256, M = 64, L = 64, Coverage = 16.0000, Len(original)/Len(found) = 1.0847, Time = 0m0.157s
+N = 256, M = 64, L = 128, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.241s
+N = 256, M = 128, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.0364, Time = 0m0.354s
+N = 256, M = 128, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0118, Time = 0m0.409s
+N = 256, M = 128, L = 32, Coverage = 16.0000, Len(original)/Len(found) = 1.0118, Time = 0m0.590s
+N = 256, M = 128, L = 64, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m1.048s
+N = 256, M = 128, L = 128, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m1.813s
+N = 256, M = 256, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0078, Time = 0m2.613s
+N = 256, M = 256, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0039, Time = 0m3.206s
+N = 256, M = 256, L = 32, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m4.862s
+N = 256, M = 256, L = 64, Coverage = 64.0000, Len(original)/Len(found) = 1.0039, Time = 0m8.037s
+N = 256, M = 256, L = 128, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m14.010s
+N = 256, M = 512, L = 8, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m20.540s
+N = 256, M = 512, L = 16, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m25.772s
+N = 256, M = 512, L = 32, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m37.979s
+N = 256, M = 512, L = 64, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 1m5.919s
+N = 256, M = 512, L = 128, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 1m59.776s
+N = 512, M = 8, L = 8, Coverage = .1250, Len(original)/Len(found) = 8.9824, Time = 0m0.003s
+N = 512, M = 8, L = 16, Coverage = .2500, Len(original)/Len(found) = 4.6126, Time = 0m0.005s
+N = 512, M = 8, L = 32, Coverage = .5000, Len(original)/Len(found) = 2.6666, Time = 0m0.002s
+N = 512, M = 8, L = 64, Coverage = 1.0000, Len(original)/Len(found) = 1.4755, Time = 0m0.003s
+N = 512, M = 8, L = 128, Coverage = 2.0000, Len(original)/Len(found) = 1.0385, Time = 0m0.003s
+N = 512, M = 8, L = 256, Coverage = 4.0000, Len(original)/Len(found) = 1.1010, Time = 0m0.005s
+N = 512, M = 16, L = 8, Coverage = .2500, Len(original)/Len(found) = 4.5714, Time = 0m0.003s
+N = 512, M = 16, L = 16, Coverage = .5000, Len(original)/Len(found) = 2.5098, Time = 0m0.009s
+N = 512, M = 16, L = 32, Coverage = 1.0000, Len(original)/Len(found) = 1.3800, Time = 0m0.008s
+N = 512, M = 16, L = 64, Coverage = 2.0000, Len(original)/Len(found) = 1.0644, Time = 0m0.005s
+N = 512, M = 16, L = 128, Coverage = 4.0000, Len(original)/Len(found) = 1.0385, Time = 0m0.008s
+N = 512, M = 16, L = 256, Coverage = 8.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.013s
+N = 512, M = 32, L = 8, Coverage = .5000, Len(original)/Len(found) = 2.8926, Time = 0m0.011s
+N = 512, M = 32, L = 16, Coverage = 1.0000, Len(original)/Len(found) = 1.7009, Time = 0m0.014s
+N = 512, M = 32, L = 32, Coverage = 2.0000, Len(original)/Len(found) = 1.1851, Time = 0m0.019s
+N = 512, M = 32, L = 64, Coverage = 4.0000, Len(original)/Len(found) = 1.0301, Time = 0m0.026s
+N = 512, M = 32, L = 128, Coverage = 8.0000, Len(original)/Len(found) = 1.0385, Time = 0m0.039s
+N = 512, M = 32, L = 256, Coverage = 16.0000, Len(original)/Len(found) = 1.0058, Time = 0m0.059s
+N = 512, M = 64, L = 8, Coverage = 1.0000, Len(original)/Len(found) = 1.6786, Time = 0m0.058s
+N = 512, M = 64, L = 16, Coverage = 2.0000, Len(original)/Len(found) = 1.1990, Time = 0m0.059s
+N = 512, M = 64, L = 32, Coverage = 4.0000, Len(original)/Len(found) = 1.0733, Time = 0m0.090s
+N = 512, M = 64, L = 64, Coverage = 8.0000, Len(original)/Len(found) = 1.0301, Time = 0m0.137s
+N = 512, M = 64, L = 128, Coverage = 16.0000, Len(original)/Len(found) = 1.0491, Time = 0m0.223s
+N = 512, M = 64, L = 256, Coverage = 32.0000, Len(original)/Len(found) = 1.0138, Time = 0m0.432s
+N = 512, M = 128, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.1179, Time = 0m0.361s
+N = 512, M = 128, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0219, Time = 0m0.435s
+N = 512, M = 128, L = 32, Coverage = 8.0000, Len(original)/Len(found) = 1.0118, Time = 0m0.596s
+N = 512, M = 128, L = 64, Coverage = 16.0000, Len(original)/Len(found) = 1.0138, Time = 0m1.077s
+N = 512, M = 128, L = 128, Coverage = 32.0000, Len(original)/Len(found) = 1.0219, Time = 0m1.659s
+N = 512, M = 128, L = 256, Coverage = 64.0000, Len(original)/Len(found) = 1.0118, Time = 0m3.125s
+N = 512, M = 256, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.0385, Time = 0m2.899s
+N = 512, M = 256, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0000, Time = 0m3.544s
+N = 512, M = 256, L = 32, Coverage = 16.0000, Len(original)/Len(found) = 1.0058, Time = 0m5.077s
+N = 512, M = 256, L = 64, Coverage = 32.0000, Len(original)/Len(found) = 1.0078, Time = 0m8.490s
+N = 512, M = 256, L = 128, Coverage = 64.0000, Len(original)/Len(found) = 1.0158, Time = 0m13.482s
+N = 512, M = 256, L = 256, Coverage = 128.0000, Len(original)/Len(found) = 1.0019, Time = 0m25.145s
+N = 512, M = 512, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0000, Time = 0m22.437s
+N = 512, M = 512, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0039, Time = 0m26.695s
+N = 512, M = 512, L = 32, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m39.598s
+N = 512, M = 512, L = 64, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 1m6.643s
+N = 512, M = 512, L = 128, Coverage = 128.0000, Len(original)/Len(found) = 1.0019, Time = 1m48.810s
+N = 512, M = 512, L = 256, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 3m40.508s
+\end{verbatim}
+}
+\clearpage
+Some interesting things that we noticed after performing the experiments are as follows : 
+
+With lower coverage, the ratio is almost always > 1. Which means that the actual superstring is not being found, but a smaller one is. This might be because there are gaps in the data set due to less coverage. 
+As N reaches around 1024 and M reaches around 512, the time taken slowly increases to beyond a few minutes. So we carried out experiements only till N = 512.
+The tipping point for the coverage seems to depend on the length of the string as well as the value of M. For higher values of N and M, a higher value of coverage is required to get an accurate result. Generally, a coverage of more than 32 seems to be sufficient to get an accurate result in most cases. 
+The lesser the length of each fragment, the more accurate is the result for the same coverage. This seems to be because the value of M changes if the other two values are set. 
+
+For actual DNA data from some place like Genbank, we found that we got exact matches for lower coverage and lower values of both M and L. However, at very low coverage, the accuracy was worse than what it was for random english alphabets. We think this is because DNA is made of only 4 characters and as such there is a higher chance of overlap here compared to in normal random text. The time taken was also higher than that in case of the english alphabet based strings.
+
+The results for this are pasted on the next page.
+\clearpage
+{\small
+\begin{verbatim}
+N = 32, M = 8, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.0666, Time = 0m0.003s
+N = 32, M = 8, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0666, Time = 0m0.003s
+N = 32, M = 16, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.005s
+N = 32, M = 16, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0666, Time = 0m0.004s
+N = 32, M = 32, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.014s
+N = 32, M = 32, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.018s
+N = 32, M = 64, L = 8, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.087s
+N = 32, M = 64, L = 16, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.110s
+N = 32, M = 128, L = 8, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.660s
+N = 32, M = 128, L = 16, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.843s
+N = 32, M = 256, L = 8, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m5.177s
+N = 32, M = 256, L = 16, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m6.841s
+N = 32, M = 512, L = 8, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m41.745s
+N = 32, M = 512, L = 16, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 0m54.364s
+N = 64, M = 8, L = 8, Coverage = 1.0000, Len(original)/Len(found) = 1.3333, Time = 0m0.002s
+N = 64, M = 8, L = 16, Coverage = 2.0000, Len(original)/Len(found) = 1.1851, Time = 0m0.003s
+N = 64, M = 8, L = 32, Coverage = 4.0000, Len(original)/Len(found) = 1.1034, Time = 0m0.003s
+N = 64, M = 16, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.1428, Time = 0m0.004s
+N = 64, M = 16, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.1851, Time = 0m0.004s
+N = 64, M = 16, L = 32, Coverage = 8.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.005s
+N = 64, M = 32, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.0847, Time = 0m0.012s
+N = 64, M = 32, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0491, Time = 0m0.015s
+N = 64, M = 32, L = 32, Coverage = 16.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.024s
+N = 64, M = 64, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.071s
+N = 64, M = 64, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.107s
+N = 64, M = 64, L = 32, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.147s
+N = 64, M = 128, L = 8, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.569s
+N = 64, M = 128, L = 16, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.743s
+N = 64, M = 128, L = 32, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m1.157s
+N = 64, M = 256, L = 8, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m4.627s
+N = 64, M = 256, L = 16, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m5.967s
+N = 64, M = 256, L = 32, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m9.242s
+N = 64, M = 512, L = 8, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m37.622s
+N = 64, M = 512, L = 16, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m48.685s
+N = 64, M = 512, L = 32, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 1m16.197s
+N = 128, M = 8, L = 8, Coverage = .5000, Len(original)/Len(found) = 2.9090, Time = 0m0.013s
+N = 128, M = 8, L = 16, Coverage = 1.0000, Len(original)/Len(found) = 1.3763, Time = 0m0.002s
+N = 128, M = 8, L = 32, Coverage = 2.0000, Len(original)/Len(found) = 1.0940, Time = 0m0.003s
+N = 128, M = 8, L = 64, Coverage = 4.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.003s
+N = 128, M = 16, L = 8, Coverage = 1.0000, Len(original)/Len(found) = 2.0000, Time = 0m0.004s
+N = 128, M = 16, L = 16, Coverage = 2.0000, Len(original)/Len(found) = 1.1743, Time = 0m0.004s
+N = 128, M = 16, L = 32, Coverage = 4.0000, Len(original)/Len(found) = 1.0578, Time = 0m0.004s
+N = 128, M = 16, L = 64, Coverage = 8.0000, Len(original)/Len(found) = 1.0322, Time = 0m0.007s
+N = 128, M = 32, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.3061, Time = 0m0.012s
+N = 128, M = 32, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0491, Time = 0m0.015s
+N = 128, M = 32, L = 32, Coverage = 8.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.020s
+N = 128, M = 32, L = 64, Coverage = 16.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.038s
+N = 128, M = 64, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.1531, Time = 0m0.076s
+N = 128, M = 64, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.102s
+N = 128, M = 64, L = 32, Coverage = 16.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.148s
+N = 128, M = 64, L = 64, Coverage = 32.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.241s
+N = 128, M = 128, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.617s
+N = 128, M = 128, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.707s
+N = 128, M = 128, L = 32, Coverage = 32.0000, Len(original)/Len(found) = 1.0078, Time = 0m1.098s
+N = 128, M = 128, L = 64, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m2.000s
+N = 128, M = 256, L = 8, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m4.569s
+N = 128, M = 256, L = 16, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m5.909s
+N = 128, M = 256, L = 32, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m8.774s
+N = 128, M = 256, L = 64, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m14.837s
+N = 128, M = 512, L = 8, Coverage = 32.0000, Len(original)/Len(found) = .8888, Time = 0m37.699s
+N = 128, M = 512, L = 16, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m45.327s
+N = 128, M = 512, L = 32, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 1m8.413s
+N = 128, M = 512, L = 64, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 1m59.859s
+N = 256, M = 8, L = 8, Coverage = .2500, Len(original)/Len(found) = 5.8181, Time = 0m0.025s
+N = 256, M = 8, L = 16, Coverage = .5000, Len(original)/Len(found) = 3.2405, Time = 0m0.004s
+N = 256, M = 8, L = 32, Coverage = 1.0000, Len(original)/Len(found) = 1.3989, Time = 0m0.004s
+N = 256, M = 8, L = 64, Coverage = 2.0000, Len(original)/Len(found) = 1.4628, Time = 0m0.003s
+N = 256, M = 8, L = 128, Coverage = 4.0000, Len(original)/Len(found) = 1.1962, Time = 0m0.004s
+N = 256, M = 16, L = 8, Coverage = .5000, Len(original)/Len(found) = 3.0117, Time = 0m0.004s
+N = 256, M = 16, L = 16, Coverage = 1.0000, Len(original)/Len(found) = 1.4970, Time = 0m0.004s
+N = 256, M = 16, L = 32, Coverage = 2.0000, Len(original)/Len(found) = 1.2864, Time = 0m0.005s
+N = 256, M = 16, L = 64, Coverage = 4.0000, Len(original)/Len(found) = 1.0801, Time = 0m0.007s
+N = 256, M = 16, L = 128, Coverage = 8.0000, Len(original)/Len(found) = 1.1179, Time = 0m0.009s
+N = 256, M = 32, L = 8, Coverage = 1.0000, Len(original)/Len(found) = 1.9248, Time = 0m0.012s
+N = 256, M = 32, L = 16, Coverage = 2.0000, Len(original)/Len(found) = 1.1689, Time = 0m0.017s
+N = 256, M = 32, L = 32, Coverage = 4.0000, Len(original)/Len(found) = 1.0711, Time = 0m0.020s
+N = 256, M = 32, L = 64, Coverage = 8.0000, Len(original)/Len(found) = 1.0801, Time = 0m0.031s
+N = 256, M = 32, L = 128, Coverage = 16.0000, Len(original)/Len(found) = 1.1130, Time = 0m0.047s
+N = 256, M = 64, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.2610, Time = 0m0.075s
+N = 256, M = 64, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0534, Time = 0m0.090s
+N = 256, M = 64, L = 32, Coverage = 8.0000, Len(original)/Len(found) = 1.0534, Time = 0m0.126s
+N = 256, M = 64, L = 64, Coverage = 16.0000, Len(original)/Len(found) = 1.0118, Time = 0m0.218s
+N = 256, M = 64, L = 128, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m0.360s
+N = 256, M = 128, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.0448, Time = 0m0.763s
+N = 256, M = 128, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0039, Time = 0m0.827s
+N = 256, M = 128, L = 32, Coverage = 16.0000, Len(original)/Len(found) = 1.0199, Time = 0m1.590s
+N = 256, M = 128, L = 64, Coverage = 32.0000, Len(original)/Len(found) = 1.0158, Time = 0m3.243s
+N = 256, M = 128, L = 128, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m3.048s
+N = 256, M = 256, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0118, Time = 0m6.447s
+N = 256, M = 256, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m8.357s
+N = 256, M = 256, L = 32, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m11.229s
+N = 256, M = 256, L = 64, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m12.886s
+N = 256, M = 256, L = 128, Coverage = 128.0000, Len(original)/Len(found) = 1.0000, Time = 0m21.519s
+N = 256, M = 512, L = 8, Coverage = 16.0000, Len(original)/Len(found) = .9660, Time = 0m34.140s
+N = 256, M = 512, L = 16, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 0m40.479s
+N = 256, M = 512, L = 32, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 1m0.808s
+N = 256, M = 512, L = 64, Coverage = 128.0000, Len(original)/Len(found) = 1.0039, Time = 1m44.957s
+N = 256, M = 512, L = 128, Coverage = 256.0000, Len(original)/Len(found) = 1.0000, Time = 2m58.750s
+N = 512, M = 8, L = 8, Coverage = .1250, Len(original)/Len(found) = 9.6603, Time = 0m0.039s
+N = 512, M = 8, L = 16, Coverage = .2500, Len(original)/Len(found) = 4.3025, Time = 0m0.003s
+N = 512, M = 8, L = 32, Coverage = .5000, Len(original)/Len(found) = 2.4037, Time = 0m0.005s
+N = 512, M = 8, L = 64, Coverage = 1.0000, Len(original)/Len(found) = 1.6677, Time = 0m0.003s
+N = 512, M = 8, L = 128, Coverage = 2.0000, Len(original)/Len(found) = 1.1934, Time = 0m0.009s
+N = 512, M = 8, L = 256, Coverage = 4.0000, Len(original)/Len(found) = 1.2132, Time = 0m0.004s
+N = 512, M = 16, L = 8, Coverage = .2500, Len(original)/Len(found) = 5.2783, Time = 0m0.004s
+N = 512, M = 16, L = 16, Coverage = .5000, Len(original)/Len(found) = 2.6528, Time = 0m0.004s
+N = 512, M = 16, L = 32, Coverage = 1.0000, Len(original)/Len(found) = 1.5103, Time = 0m0.016s
+N = 512, M = 16, L = 64, Coverage = 2.0000, Len(original)/Len(found) = 1.2161, Time = 0m0.009s
+N = 512, M = 16, L = 128, Coverage = 4.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.011s
+N = 512, M = 16, L = 256, Coverage = 8.0000, Len(original)/Len(found) = 1.0513, Time = 0m0.036s
+N = 512, M = 32, L = 8, Coverage = .5000, Len(original)/Len(found) = 3.0295, Time = 0m0.015s
+N = 512, M = 32, L = 16, Coverage = 1.0000, Len(original)/Len(found) = 1.7123, Time = 0m0.014s
+N = 512, M = 32, L = 32, Coverage = 2.0000, Len(original)/Len(found) = 1.1154, Time = 0m0.019s
+N = 512, M = 32, L = 64, Coverage = 4.0000, Len(original)/Len(found) = 1.0343, Time = 0m0.043s
+N = 512, M = 32, L = 128, Coverage = 8.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.050s
+N = 512, M = 32, L = 256, Coverage = 16.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.107s
+N = 512, M = 64, L = 8, Coverage = 1.0000, Len(original)/Len(found) = 2.0813, Time = 0m0.088s
+N = 512, M = 64, L = 16, Coverage = 2.0000, Len(original)/Len(found) = 1.2307, Time = 0m0.094s
+N = 512, M = 64, L = 32, Coverage = 4.0000, Len(original)/Len(found) = 1.0219, Time = 0m0.154s
+N = 512, M = 64, L = 64, Coverage = 8.0000, Len(original)/Len(found) = 1.0078, Time = 0m0.213s
+N = 512, M = 64, L = 128, Coverage = 16.0000, Len(original)/Len(found) = 1.0158, Time = 0m0.326s
+N = 512, M = 64, L = 256, Coverage = 32.0000, Len(original)/Len(found) = 1.0199, Time = 0m0.596s
+N = 512, M = 128, L = 8, Coverage = 2.0000, Len(original)/Len(found) = 1.4545, Time = 0m0.602s
+N = 512, M = 128, L = 16, Coverage = 4.0000, Len(original)/Len(found) = 1.0578, Time = 0m0.710s
+N = 512, M = 128, L = 32, Coverage = 8.0000, Len(original)/Len(found) = 1.0118, Time = 0m0.935s
+N = 512, M = 128, L = 64, Coverage = 16.0000, Len(original)/Len(found) = 1.0118, Time = 0m1.561s
+N = 512, M = 128, L = 128, Coverage = 32.0000, Len(original)/Len(found) = 1.0058, Time = 0m2.548s
+N = 512, M = 128, L = 256, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 0m4.446s
+N = 512, M = 256, L = 8, Coverage = 4.0000, Len(original)/Len(found) = 1.1058, Time = 0m4.265s
+N = 512, M = 256, L = 16, Coverage = 8.0000, Len(original)/Len(found) = 1.0058, Time = 0m5.150s
+N = 512, M = 256, L = 32, Coverage = 16.0000, Len(original)/Len(found) = 1.0058, Time = 0m7.313s
+N = 512, M = 256, L = 64, Coverage = 32.0000, Len(original)/Len(found) = 1.0078, Time = 0m12.155s
+N = 512, M = 256, L = 128, Coverage = 64.0000, Len(original)/Len(found) = 1.0019, Time = 0m19.070s
+N = 512, M = 256, L = 256, Coverage = 128.0000, Len(original)/Len(found) = 1.0039, Time = 0m34.615s
+N = 512, M = 512, L = 8, Coverage = 8.0000, Len(original)/Len(found) = 1.0078, Time = 0m32.120s
+N = 512, M = 512, L = 16, Coverage = 16.0000, Len(original)/Len(found) = 1.0000, Time = 0m38.921s
+N = 512, M = 512, L = 32, Coverage = 32.0000, Len(original)/Len(found) = 1.0000, Time = 1m2.839s
+N = 512, M = 512, L = 64, Coverage = 64.0000, Len(original)/Len(found) = 1.0000, Time = 1m37.196s
+N = 512, M = 512, L = 128, Coverage = 128.0000, Len(original)/Len(found) = 1.0039, Time = 3m5.829s
+N = 512, M = 512, L = 256, Coverage = 256.0000, Len(original)/Len(found) = 1.0019, Time = 6m8.637s
+\end{verbatim}
+}
+\clearpage
+The code is as pasted on the next page.
+
 \clearpage
 
 \section{Longest Overlap of Strings}
@@ -65,7 +377,7 @@ We can use the existing algorithm to find the longest palindrome to also find th
 The only difference that we need to find bio-palindromes it that we should check if the characters are complements of each other. We can create a hashmap mapping each character to its complement. For example, map['A'] = 'T'. We do the same for G, C and T. Then we use the original algorithm and instead of checking if the character on the left matches the one on the right, we check if the one on the left matches the hashmap value of the one on the right. 
 \clearpage
 
-\section{Problem 6}
+\section{Partitioning a string into palindromes}
 (a) Does not work. The example string itself “ABBABABA” is a 
 counter-example. The greedy strategy would select the largest 
 palindrome “BABAB”, and break the string into A-B-BABAB-A, 
@@ -78,8 +390,8 @@ palindrome is `BABA' which starts at the 2nd position. This leaves, `A' and
 `A-BABA-B-A', i.e. three cuts. Whereas, the optimal partition would have
 been `ABA-BABA', with only one cut.\\
 \\
-(c) Here we present an $O(N^2)$ solution to the problem. \\
-
+(c) Here we present an $O(N^2)$ solution to the problem.
+\\
 Given a string $s$ of length $N$, for each position $i$, we need to know the lengths of different palindromes that start at that position. We do a bit of preprocessing to get this information. The time complexity of this preprocessing is $O(n^2)$. We do this by using the algorithm for finding the longest palindrome in a string. Given a position $i$, we can compare characters equidistant to its left and right and keep increasing the distance till these equidistant characters match. For each position, we maintain a list which stores all the unique lengths of palindrome starting at that position. We can find odd as well as even length palindromes this way. For each position $i$, there can be a maximum of $N$ entries. \\
 \\
 Now, for each position $i$, we have a set which contains the unique lengths of all palindromes starting at that position. Now we can use a recursive function with memoization to find the partition of the string into the minimum number of palindromes. 
@@ -108,7 +420,7 @@ int solve(int position)
   ret = INFINITY;
 
   list<int> s = v[position];
-  for(set<int> :: iterator it = s.begin(); it != s.end(); it++)
+  for(list<int> :: iterator it = s.begin(); it != s.end(); it++)
   {
     ret = min(ret, solve(position + *it) + 1);
   }

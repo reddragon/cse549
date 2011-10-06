@@ -6,7 +6,8 @@
 
 // This takes in a string of length n, and generates
 // m fragments of length l each.
-int main() 
+
+void get_fragments()
 {
 	// Read the actual string, and the parameters, m & l
 	freopen("actual_string.in", "r", stdin);
@@ -47,5 +48,25 @@ int main()
 	}
 	
 	free(str);
+}
+
+
+void generate_random_string()
+{
+	freopen("random_string.in", "w", stdout);
 	
+	int m = 1024,i;
+	
+	srand(time(0));
+	
+	for(i = 0; i < m; i++) {
+		printf("%c",'A'+rand() % (26));
+	}
+	printf("\n");
+}
+
+
+int main() 
+{
+	generate_string();
 }

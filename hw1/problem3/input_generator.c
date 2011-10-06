@@ -10,13 +10,13 @@
 void get_fragments()
 {
 	// Read the actual string, and the parameters, m & l
-	freopen("actual_string.in", "r", stdin);
+	//freopen("actual_string.in", "r", stdin);
 	
 	int n, m, l, i, t, j;
 	scanf("%d %d %d", &n, &m, &l);
 	
 	// Allocate memory for the big string
-	char * str = (char *)(malloc(n));
+	char * str = (char *)(malloc(n + 10));
 	// Die, if we can't
 	assert(str != NULL);	
 	
@@ -26,7 +26,7 @@ void get_fragments()
 	assert(n == (int)strlen(str) && n >= l);
 		
 	// Write the fragments to the file. This input would be used to test
-	freopen("fragments.in", "w", stdout);
+	//freopen("fragments.in", "w", stdout);
 	
 	// Writing the number of fragments and fragment length to the file
 	printf("%d %d\n", m, l);
@@ -38,7 +38,7 @@ void get_fragments()
 	for(i = 0; i < m; i++) {
 		// Find the starting point of the fragment of length l
 		// Starting points can be any point between 0 & n - l
-		t = rand() % (n - l);
+		t = rand() % (n - l + 1);
 		
 		// Writing the actual string
 		for(j = t; j < t + l; j++) {

@@ -11,7 +11,7 @@
 
 \title{Homework - 1}
 
-\author{Names Here}
+\author{Aniruddha Laud (107635282) and Gaurav Menghani (108266803)}
 
 
 
@@ -80,7 +80,7 @@ been `ABA-BABA', with only one cut.\\
 \\
 (c) Here we present an $O(N^2)$ solution to the problem. \\
 
-Given a string $s$ of length $N$, for each position $i$, we need to know the lengths of different palindromes that start at that position. We do a bit of preprocessing to get this information. The time complexity of this preprocessing is $O(n^2)$. We do this by using the algorithm for finding the longest palindrome in a string. Given a position $i$, we can compare characters equidistant to its left and right and keep increasing the distance till these equidistant characters match. For each position, we maintain a set which stores all the unique lengths of palindrome starting at that position. We can find odd as well as even length palindromes this way. For each position $i$, there can be a maximum of $N$ entries. \\
+Given a string $s$ of length $N$, for each position $i$, we need to know the lengths of different palindromes that start at that position. We do a bit of preprocessing to get this information. The time complexity of this preprocessing is $O(n^2)$. We do this by using the algorithm for finding the longest palindrome in a string. Given a position $i$, we can compare characters equidistant to its left and right and keep increasing the distance till these equidistant characters match. For each position, we maintain a list which stores all the unique lengths of palindrome starting at that position. We can find odd as well as even length palindromes this way. For each position $i$, there can be a maximum of $N$ entries. \\
 \\
 Now, for each position $i$, we have a set which contains the unique lengths of all palindromes starting at that position. Now we can use a recursive function with memoization to find the partition of the string into the minimum number of palindromes. 
 \\
@@ -107,7 +107,7 @@ int solve(int position)
 	
   ret = INFINITY;
 
-  set<int> s = v[position];
+  list<int> s = v[position];
   for(set<int> :: iterator it = s.begin(); it != s.end(); it++)
   {
     ret = min(ret, solve(position + *it) + 1);

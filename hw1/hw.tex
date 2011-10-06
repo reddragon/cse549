@@ -377,7 +377,7 @@ We can use the existing algorithm to find the longest palindrome to also find th
 The only difference that we need to find bio-palindromes it that we should check if the characters are complements of each other. We can create a hashmap mapping each character to its complement. For example, map['A'] = 'T'. We do the same for G, C and T. Then we use the original algorithm and instead of checking if the character on the left matches the one on the right, we check if the one on the left matches the hashmap value of the one on the right. 
 \clearpage
 
-\section{Partitioning a string into palindromes}
+\section{Optimally partitioning a string into palindromes}
 (a) Does not work. The example string itself “ABBABABA” is a 
 counter-example. The greedy strategy would select the largest 
 palindrome “BABAB”, and break the string into A-B-BABAB-A, 

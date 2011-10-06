@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}Experience with GenBank/Entrez database}{3}
+\contentsline {section}{\numberline {2}Experience with PubMed}{5}
+\contentsline {section}{\numberline {3}Shortest Common Superstring}{7}
+\contentsline {section}{\numberline {4}Longest Overlap of Strings}{18}
+\contentsline {section}{\numberline {5}Bio Palindromes}{19}
+\contentsline {section}{\numberline {6}Optimally partitioning a string into palindromes}{20}

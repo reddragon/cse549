@@ -50,7 +50,7 @@ string get_superstring(vector<string> v)
 	int i, j, k;
 	while(v.size() > 1)
 	{
-		int x, y;
+		int x = 0, y = 1;
 		int overlap_val = 0;
 		for(i = 1; i < v.size(); i++)
 		{
@@ -61,12 +61,12 @@ string get_superstring(vector<string> v)
 				{
 					x = i;
 					y = j;
-					overlap_val = t.size();
+					overlap_val = v[i].size() + v[j].size() - t.size();
 				}
 			}
 		}
 		vector<string> tx;
-		//cout<<"Chosen strings : " << v[x] << " " << v[y] << endl;
+		//cout<<"Chosen strings : " << v[x] << " " << v[y] << " " << overlap_2(v[x], v[y]) << endl;
 		for(i = 0; i < v.size(); i++)
 		{
 			if(i == x || i == y)

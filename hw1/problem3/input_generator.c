@@ -9,7 +9,7 @@
 int main() 
 {
 	// Read the actual string, and the parameters, m & l
-	freopen("actual_string.in", "r", stdin);
+	//freopen("actual_string.in", "r", stdin);
 	
 	int n, m, l, i, t, j;
 	scanf("%d %d %d", &n, &m, &l);
@@ -25,7 +25,7 @@ int main()
 	assert(n == (int)strlen(str) && n >= l);
 		
 	// Write the fragments to the file. This input would be used to test
-	freopen("fragments.in", "w", stdout);
+	//freopen("fragments.in", "w", stdout);
 	
 	// Writing the number of fragments and fragment length to the file
 	printf("%d %d\n", m, l);

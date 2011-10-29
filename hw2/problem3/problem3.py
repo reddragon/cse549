@@ -1,6 +1,24 @@
+import os
+import sys
+start_sequence = set(['ATG'])
 stop_sequences = set(['TGA', 'TAA', 'TAG'])
 
-f = open('sequence_rand', 'r')
+file_addr = sys.argv[1]
+has_newline = 1
+
+if has_newline:
+	rf = open(file_addr, 'r')
+	wf = open(file_addr + '.tmp', 'w')
+	
+	for line in rf:
+		newline = line.strip('\r\n')
+		wf.write(newline)
+	rf.close()
+	wf.close()
+	os.unlink(file_addr)
+	os.rename(file_addr + '.tmp', file_addr)
+	
+f = open(file_addr, 'r')
 str = f.readline()
 f.close()
 
@@ -21,8 +39,9 @@ for i in range(len(str)):
 			if start >= 0:
 				end = end + 1
 			else:
-				start = i/3
-				end = i/3
+				if start == -1 and x in start_sequence:
+					start = i/3
+					end = i/3
 				
 		
 if start >= 0:

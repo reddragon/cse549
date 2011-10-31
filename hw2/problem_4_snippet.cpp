@@ -1,7 +1,3 @@
-#include<iostream>
-#include<cstring>
-using namespace std;
-
 int dp[200][200];
 string a, b;
 #define INF 10000

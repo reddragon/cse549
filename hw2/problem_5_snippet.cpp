@@ -1,9 +1,6 @@
-#include<iostream>
-#include<cstring>
-using namespace std;
-
 string s;
-int dp[200][200];
+#define MAX 200
+int dp[MAX][MAX];
 
 #define INF 10000
 int solve(int i, int j)
@@ -19,7 +16,7 @@ int solve(int i, int j)
   else
   {
     ref = min(ref, 1+solve(i,j-1));
-	ref = min(ref, 1+solve(i+1,j));
+    ref = min(ref, 1+solve(i+1,j));
   }
   return ref;
 }

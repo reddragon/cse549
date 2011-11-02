@@ -55,7 +55,10 @@
 
 \title{Homework - 2}
 
-\author{Aniruddha Laud (107635282) and Gaurav Menghani (108266803)}
+\author{\\
+        Aniruddha Laud (107635282)\\
+        Gaurav Menghani (108266803)\\
+        Madhava Keralapura (107710538)\\}
 
 
 
@@ -77,6 +80,48 @@
 \clearpage
 
 \section{Open Reading Frames}
+Open Reading Frames in a DNA sequence are sequences of codons, separated by a starting and stopping codon pair. Using the program listed later, we analysed Viral, Bacterial, Human and Random DNA sequences. We had roughly 6 MB of genomic data in FASTA files for Bacterial, Human and Random DNA sequences, and 1 MB of genomic data for Viral DNA. So its easy to compare amongst them.
+
+The histogram for the ORFs in viral genomes is below. It was easy to see that there are few long ORFs, but the number of ORFs of length in the range 200-550 remains roughly constant.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{viral_genome.png}
+\caption{Histogram of Viral Genome ORF length v/s Frequencies}\label{fig:fs}
+\end{figure}
+
+\clearpage
+
+The histogram for the ORFs in bacterial genomes is below. Contrast the histogram with the histogram of human genomic data. While the peak of this histogram is smaller, but the number of ORFs of lengths in the region 300-700 are significant as compared to human genome, where it steeply drops to nearly zero in that range.
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.4]{bacterial_genome.png}
+\caption{Histogram of Bacterial Genome ORF length v/s Frequencies}\label{fig:fs}
+\end{figure}
+
+
+The histogram below shows a distinct difference from viral and bacterial genomes. There are fewer ORFs of lengths longer than 300, but more ORFs of around 100-150 codons.
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{human_genome.png}
+\caption{Histogram of Human Genome ORF length v/s Frequencies}\label{fig:fs}
+\end{figure}
+\clearpage
+The histogram below is for a Random DNA sequence, which was about the same size as the human and bacterial genome data. However, a clear distinction is that there are no ORFs of length more than 250 codons, and the number of ORFs with length greater than 100 decreases extremely steeply. This is inline with our expectations.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{random_sequence.png}
+\caption{Histogram of Random DNA sequence ORF length v/s Frequencies}\label{fig:fs}
+\end{figure}
+
+
+\clearpage
+
+\lstinputlisting[label=samplecode,caption=Source Code for the Open Reading Frames problem]{problem3.py}
+\clearpage
+
+ 
 \clearpage
 
 \section{Shortest non-contiguous supersequence of two strings Problem}
@@ -109,11 +154,15 @@ The code for the solution is as follows:
 \clearpage
 
 \section{Pizza Picking Problem}
-In this problem, we again use the Dynamic Programming approach. The constraint of the problem is such, that at any given time the gaps in the pizza pie would be contiguous. If there are $n$ slices in the pizza, picking any slice as the pivot, we start numbering each slice from $0$ to $n-1$ in clockwise order. Now, when Alice and Bob start picking slices, there would be only one contiguous gap in the pizza pie. This gap can be described by two indices, $i$ and $j$, the first missing slice and the last missing slice, in clockwise order. If we know $i$, $j$ and whose turn it is to take the next slice, we move ahead by taking a pizza from either of the ends, adding the slice area to alice's account if it was alice's turn, and then solving the subproblem of picking slices from the remaining pizza, and allowing the other person to pick a slice this time. 
+In this problem, we again use the Dynamic Programming approach. The constraint of the problem is such, that at any given time the gaps in the pizza pie would be contiguous. If there are $n$ slices in the pizza, picking any slice as the pivot, we start numbering each slice from $0$ to $n-1$ in clockwise order. Now, when Alice and Bob start picking slices, there would be only one contiguous gap in the pizza pie. This gap can be described by two indices, $i$ and $j$, the first missing slice and the last missing slice, in clockwise order. We solve the problem from Alice's perspective, and hence when we have a pizza with a contiguous gap from $i$ and $j$, the problem is to maximize the total area of pizza slices that Alice gets.
+
+If we know $i$, $j$ and whose turn it is to take the next slice, we move ahead by taking a pizza from either of the ends, adding the slice area to alice's account if it was alice's turn, and then solving the subproblem of picking slices from the remaining pizza, and allowing the other person to pick a slice this time. In Alice's turn, Alice chooses the slice which maximizes the result, whereas in Bob's turn, Bob chooses the slice, which minimizes the result (remember, the result is the maximum area of the pizza that Alice consumes, so Bob, playing optimally, would obviously try to minimize this). 
 
 Hence the state of the Dynamic Programming solution is $i$, $j$, and $turn$. $turn$ is 1, when its Alice's turn to pick a slice, and 0 when its not. Thus the DP table would be of size $n.n.2$, which is $O(n^2)$ space complexity. From one problem, we can reach to a sub-problem in constant time, and thus each cell in the table would be filled in constant time. Since there are at most $n^2$ cells in the DP, it takes $O(n^2)$ time.
 
 The code for the solution is as follows:
 \lstinputlisting[label=samplecode,caption=Dynamic Programming solution for the problem]{problem_6_snippet.cpp}
+
+There exists, another elegant solution which does not require the $turn$ variable in the DP state.
 
 \end{document}

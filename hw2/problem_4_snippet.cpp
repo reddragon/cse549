@@ -20,7 +20,7 @@ int solve(int i, int j)
   return ref;
 }
 
-int main()
+int solution()
 {
   memset(dp,-1,sizeof(dp));
   a = "abcd"; b = "ram";

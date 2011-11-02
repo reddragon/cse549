@@ -8,22 +8,31 @@ int pizza_area[MAX];
 
 #define MOD(x,y) ((x)>=(y)?(x)%(y):((x)<0?(x)+(n):(x)))
 
-int solve(int i, int j, int alices_turn)
+int solve(int i, int j, int turn)
 {
-	int &ref = dp[i][j][alices_turn];
-	if(ref != -1) return ref;
+  int &ref = dp[i][j][turn];
+  if(ref != -1) return ref;
+  if(i == 0 && j == n-1) return ref = 0;
 	
-	if(i == 0 && j == n-1) return ref = 0;
+  ref = 0;
+  int left = MOD(i-1,n);
+  if(left != j)
+  ref = (turn ? pizza_area[left] : 0) + solve(left,j,!turn);
 	
-	ref = 0;
-	int left = MOD(i-1,n);
-	if(left != j)
-		ref = (alices_turn ? pizza_area[left] : 0) + solve(left,j,!alices_turn);
-	
-	int right = MOD(j+1,n);
-	if(right != i)
-		ref = max(ref, (alices_turn ? pizza_area[right] : 0) + solve(i,right,!alices_turn));
-	return ref;
+  int right = MOD(j+1,n);
+  if(right != i)
+  {
+	if(turn)
+		ref = max(ref, pizza_area[right] + solve(i,right,!turn));
+	else
+	{
+		if(ref == 0)
+			ref = solve(i,right,!turn);
+		else
+			ref = min(ref, solve(i,right,!turn));
+	}
+  }
+  return ref;
 }
 
 int solution()

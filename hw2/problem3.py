@@ -13,7 +13,7 @@ if(len(sys.argv) > 2):
 if(len(sys.argv) > 3):
 	# Logging
 	log_file = sys.argv[3]
-	sys.stdout = open(log_file, "a")
+	sys.stdout = open(log_file, "w")
 
 has_newline = 1
 

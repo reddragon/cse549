@@ -15,7 +15,17 @@ int solve(int i, int j, int turn)
 	
   int right = MOD(j+1,n);
   if(right != i)
-  ref = max(ref, (turn ? pizza_area[right] : 0) + solve(i,right,!turn));
+  {
+	if(turn)
+		ref = max(ref, pizza_area[right] + solve(i,right,!turn));
+	else
+	{
+		if(ref == 0)
+			ref = solve(i,right,!turn);
+		else
+			ref = min(ref, solve(i,right,!turn));
+	}
+  }
   return ref;
 }
 

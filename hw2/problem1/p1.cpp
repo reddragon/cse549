@@ -48,7 +48,6 @@ bool rabin_karp(string &hay, string &needle, int prime)
 	int i, j, k;
 	int hash = 0;
 	int nhash = 0;
-	//cout<<hay<<" "<<needle<<endl;
 	for(i = 0; i < needle.size(); i++)
 	{
 		nhash *= powr[1];
@@ -57,26 +56,21 @@ bool rabin_karp(string &hay, string &needle, int prime)
 	}
 	for(i = 0; i < hay.size(); i++)
 	{
-		//cout<< i <<" "<<hash<<" "<<nhash<<" "<<endl;
 		if(i - (int)needle.size() >= 0)
 		{
 			hash -= (((hay[i - needle.size()] - 'a' + 1)*powr[(int)needle.size() - 1])%prime);
-			//cout<< "In : " << i <<" "<<hash<<" "<<nhash<<" "<<endl;
 			if(hash < 0)
 				hash += prime;
 		}
 		hash *= powr[1];
 		hash += (hay[i] - 'a' + 1);
 		hash %= prime;
-		//cout<<"Do "<< i <<" "<<hash<<" "<<nhash<<" "<<endl;
 		if(hash == nhash && i - (int)needle.size() + 1 >= 0)
 		{
-			//cout<<"Entered " << i <<" "<<hash<<" "<<nhash<<" "<<endl;
 			if(hay.substr(i - (int)needle.size() + 1, needle.size()) == needle)
 				return 1;
 		}
 	}
-	//cout<<"out"<<endl;
 	return 0;
 }
 void solve(int base, int prime)
@@ -91,7 +85,6 @@ void solve(int base, int prime)
 	for(i = 0; i < needles.size(); i++)
 	{
 		assert(rabin_karp(haystack, needles[i], prime) == 1);
-		//cout<<needles[i]<<" done"<<endl;
 	}
 }
 int main()
